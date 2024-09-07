@@ -1,0 +1,761 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+:root {
+  --color-bg1: rgb(8, 10, 15);
+  --color-bg2: rgb(0, 17, 32);
+  --color1: 18, 113, 255;
+  --color2: 112, 128, 144;
+  --color3: 100, 100, 255;
+  --color4: 50, 160, 220;
+  --color5: 169, 169, 169;
+  --color-interactive: 47, 79, 79;
+  --circle-size: 80%;
+  --blending: hard-light;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  color: #FFF;
+  background: transparent;
+  border: none;
+}
+
+html, body {
+  font-family: 'Dongle', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.462);
+}
+
+body {
+  background: #FFF;
+  font-family: 'Montserrat', sans-serif;
+  overflow-y: auto; /* Permite rolagem vertical */
+  overflow-x: hidden; /* Evita rolagem horizontal */
+}
+
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+.card {
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  user-select: none;
+  max-width: 600px;
+  padding: 48px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  box-shadow: 0 4px 90px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.card:before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgb(255,255,255);
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 34%, rgba(255,255,255,1) 89%, rgba(255,255,255,0) 100%);
+  opacity: 0.3;
+  filter: blur(.5px);
+  mix-blend-mode: hard-light;
+}
+
+.card .noise {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  opacity: 0.1;
+}
+
+.card .content {
+  position: relative;
+  z-index: 2;
+  text-shadow: -3px 0px 2px rgba(0,0,0,0.1);
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+p {
+  line-height: 1.6;
+}
+
+@keyframes moveInCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes moveVertical {
+  0% {
+    transform: translateY(-50%);
+  }
+  50% {
+    transform: translateY(50%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes moveHorizontal {
+  0% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+  50% {
+    transform: translateX(50%) translateY(10%);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+}
+
+.main-section {
+  width: 100%;
+  height: 100vh; /* Define a altura para 100% da viewport */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.gradient-bg {
+  width: 100%;
+  height: 100vh; /* Garante que a seção gradient ocupe toda a altura */
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
+}
+
+.gradient-bg .svgBlur {
+  display: none;
+}
+
+.gradient-bg .noiseBg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  mix-blend-mode: soft-light;
+  opacity: 0.3;
+}
+
+.gradient-bg .gradients-container {
+  filter: url(#goo) blur(40px);
+  width: 100%;
+  height: 100%;
+}
+
+.gradient-bg .g1 {
+  position: absolute;
+  background: radial-gradient(circle at center, rgba(var(--color1), 0.8) 0, rgba(var(--color1), 0) 50%) no-repeat;
+  mix-blend-mode: var(--blending);
+  width: var(--circle-size);
+  height: var(--circle-size);
+  top: calc(50% - var(--circle-size) / 2);
+  left: calc(50% - var(--circle-size) / 2);
+  transform-origin: center center;
+  animation: moveVertical 30s ease infinite;
+  opacity: 1;
+}
+
+.gradient-bg .g2 {
+  position: absolute;
+  background: radial-gradient(circle at center, rgba(var(--color2), 0.8) 0, rgba(var(--color2), 0) 50%) no-repeat;
+  mix-blend-mode: var(--blending);
+  width: var(--circle-size);
+  height: var(--circle-size);
+  top: calc(50% - var(--circle-size) / 2);
+  left: calc(50% - var(--circle-size) / 2);
+  transform-origin: calc(50% - 400px);
+  animation: moveInCircle 20s reverse infinite;
+  opacity: 1;
+}
+
+.gradient-bg .g3 {
+  position: absolute;
+  background: radial-gradient(circle at center, rgba(var(--color3), 0.8) 0, rgba(var(--color3), 0) 50%) no-repeat;
+  mix-blend-mode: var(--blending);
+  width: var(--circle-size);
+  height: var(--circle-size);
+  top: calc(50% - var(--circle-size) / 2 + 200px);
+  left: calc(50% - var(--circle-size) / 2 - 500px);
+  transform-origin: calc(50% + 400px);
+  animation: moveInCircle 40s linear infinite;
+  opacity: 1;
+}
+
+.gradient-bg .g4 {
+  position: absolute;
+  background: radial-gradient(circle at center, rgba(var(--color4), 0.8) 0, rgba(var(--color4), 0) 50%) no-repeat;
+  mix-blend-mode: var(--blending);
+  width: var(--circle-size);
+  height: var(--circle-size);
+  top: calc(50% - var(--circle-size) / 2);
+  left: calc(50% - var(--circle-size) / 2);
+  transform-origin: calc(50% - 200px);
+  animation: moveHorizontal 40s ease infinite;
+  opacity: 0.7;
+}
+
+.gradient-bg .g5 {
+  position: absolute;
+  background: radial-gradient(circle at center, rgba(var(--color5), 0.8) 0, rgba(var(--color5), 0) 50%) no-repeat;
+  mix-blend-mode: var(--blending);
+  width: calc(var(--circle-size) * 2);
+  height: calc(var(--circle-size) * 2);
+  top: calc(50% - var(--circle-size));
+  left: calc(50% - var(--circle-size));
+  transform-origin: calc(50% - 800px) calc(50% + 200px);
+  animation: moveInCircle 20s ease infinite;
+  opacity: 1;
+}
+
+.gradient-bg .interactive {
+  position: absolute;
+  background: radial-gradient(circle at center, rgba(var(--color-interactive), 0.8) 0, rgba(var(--color-interactive), 0) 50%) no-repeat;
+  mix-blend-mode: var(--blending);
+  width: 100%;
+  height: 100%;
+  top: -50%;
+  left: -50%;
+  opacity: 0.7;
+}
+
+
+/* Remove a caixa card */
+.card {
+    display: none; /* Opcionalmente você pode definir como display: none para garantir que não apareça */
+  }
+  
+  /* Novo conteúdo */
+  .text-content {
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff; /* Cor do texto */
+    max-width: 800px; /* Ajuste conforme necessário */
+    padding: 20px;
+  }
+  
+  .text-content h2 {
+    font-size: 2.5rem; /* Ajuste conforme necessário */
+    margin: 0;
+  }
+  
+  .text-content h2 span {
+    color: #78c6e7; /* Cor específica para o texto dentro do span */
+  }
+  
+  .text-content p {
+    margin-top: 10px;
+    font-size: 1.2rem; /* Ajuste conforme necessário */
+  }
+  
+
+
+
+
+
+/* Seção Sobre */
+.sobre {
+    background-color: var(--color-bg1); /* Preto total */
+    color: #fff;
+    padding: 40px 0;
+    opacity: 0; /* Inicialmente invisível */
+    transform: translateY(20px); /* Inicialmente deslocado */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  /* Animação de Carregamento */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Aplicar a animação quando a seção aparece na tela */
+  .sobre.animate {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+  
+  /* Interface dentro da seção */
+  .interface {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* Flexbox para layout */
+  .flex {
+    display: flex;
+    align-items: center; /* Alinha o texto e a imagem verticalmente ao centro */
+    justify-content: space-between; /* Espaça o texto e a imagem para as extremidades */
+    gap: 20px; /* Espaçamento entre o texto e a imagem */
+  }
+  
+  /* Estilo da imagem na seção "Sobre" */
+  .img-sobre img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--color1); /* Ajuste a cor da borda conforme necessário */
+  }
+  
+  /* Texto da seção "Sobre" */
+  .txt-sobre {
+    flex: 1;
+    max-width: 600px; /* Limita a largura máxima do texto */
+    line-height: 1.6; /* Maior altura da linha para facilitar a leitura */
+  }
+  
+  /* Ajustar o título */
+  .txt-sobre h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; /* Coloca o texto em coluna */
+    line-height: 1.2; /* Ajusta a altura da linha para melhor legibilidade */
+    border-bottom: 2px solid var(--color1); /* Linha abaixo do título */
+    padding-bottom: 10px; /* Espaçamento abaixo da linha */
+  }
+  
+  /* Cor do span no título */
+  .txt-sobre h2 span {
+    color: #78c6e7; /* Azul para o texto 'EU FAÇO' */
+  }
+  
+  /* Estilizar parágrafo */
+  .txt-sobre p {
+    font-size: 1rem; /* Ajuste o tamanho da fonte conforme necessário */
+    margin-bottom: 20px; /* Margem inferior para espaçamento */
+    text-align: justify; /* Alinha o texto justificado */
+  }
+  
+  /* Botões de redes sociais */
+  .btn-social {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  /* Ajuste o estilo dos botões de redes sociais */
+  .btn-social button {
+    background: none;
+    border: 2px solid var(--color1); /* Ajuste a cor do botão conforme necessário */
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .btn-social i {
+    color: var(--color1); /* Ajuste a cor dos ícones conforme necessário */
+    font-size: 1.5rem;
+  }
+  
+
+
+
+
+
+
+/* Linha do Tempo */
+.linha-do-tempo {
+  padding: 40px 4%;
+  background-color: #010409; /* Cor de fundo escura */
+  color: white;
+  position: relative; /* Garantir que a posição seja relativa para possíveis ajustes */
+  width: 100%; /* Garantir que a largura ocupe 100% da página */
+  box-sizing: border-box; /* Garantir que o padding não afete a largura total */
+}
+
+.linha-do-tempo .titulo {
+  font-size: 38px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #ffffff; /* Cor do texto */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra do texto */
+}
+
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 10px 0;
+  list-style: none;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background-color: #78c6e7; /* Cor da linha do tempo */
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px; /* Ajuste para centralizar a linha */
+}
+
+.timeline-section {
+  margin-bottom: 60px;
+}
+
+.section-title {
+  word-spacing: 15px;
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #ffffff; /* Cor do texto */
+  text-align: center;
+
+  /* Sombra sutil para destacar o texto */
+  text-shadow: 1px 1px 2px #000000; /* Pequena sombra preta ao redor do texto */
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  margin-bottom: 30px;
+}
+
+.timeline-item::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.timeline-content {
+  background: #0d1117; /* Cor de fundo dos itens da linha do tempo */
+  border-radius: 6px;
+  padding: 20px;
+  position: relative;
+  width: 100%;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.864); /* Sombra ao redor dos itens */
+  color: white;
+}
+
+.timeline-item:nth-child(odd) {
+  left: 50%; /* Itens ímpares à direita */
+  text-align: left;
+}
+
+.timeline-item:nth-child(even) {
+  left: 0; /* Itens pares à esquerda */
+  text-align: right;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+  margin-right: auto; /* Alinhamento correto à direita */
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+  margin-left: auto; /* Alinhamento correto à esquerda */
+}
+
+/* Específico para mover o item de graduação para o lado direito */
+.timeline-item:nth-child(1) {
+  left: 50%; /* Ajuste para o item desejado */
+  text-align: left;
+}
+
+.timeline-item:nth-child(1) .timeline-content {
+  margin-right: auto; /* Alinhamento à direita */
+}
+
+.timeline-content h4 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.timeline-content p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.logo-timeline {
+  width: 150px; /* Ajuste o tamanho conforme necessário */
+  height: auto; /* Mantém a proporção original da imagem */
+  display: block;
+  margin-bottom: 2px;
+}
+
+
+
+
+
+/* Responsividade */
+@media (max-width: 1232px) {
+  .timeline-item {
+      width: 50%;
+  }
+}
+
+@media (max-width: 732px) {
+  .timeline-item {
+      width: 100%;
+      padding-right: 0;
+      text-align: left;
+  }
+
+  .timeline-item:nth-child(even) {
+      left: 0;
+  }
+
+  .timeline-item:nth-child(odd) {
+      left: 0;
+  }
+
+  .timeline-content {
+      width: calc(100% - 20px); /* Ajusta a largura dos conteúdos para dispositivos menores */
+  }
+
+  .timeline-content p {
+      font-size: 14px; /* Reduz o tamanho da fonte para dispositivos menores */
+  }
+
+  .section-title {
+      font-size: 24px; /* Ajusta o tamanho da fonte para dispositivos menores */
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-content {
+      padding: 15px; /* Ajusta o padding para dispositivos muito pequenos */
+  }
+
+  .timeline-content h4 {
+      font-size: 20px; /* Ajusta o tamanho do título para dispositivos muito pequenos */
+  }
+
+  .timeline-content p {
+      font-size: 12px; /* Ajusta o tamanho da fonte para dispositivos muito pequenos */
+  }
+
+  .logo-timeline {
+      width: 100px; /* Ajusta a largura da logo para dispositivos muito pequenos */
+  }
+}
+
+
+
+
+
+@media (max-width: 732px) {
+  .timeline-item {
+      width: 100%; /* Garante que as caixas ocupem toda a largura disponível */
+      padding-right: 0;
+      text-align: left;
+  }
+
+  .timeline-content {
+      width: calc(100% - 40px); /* Ajusta a largura para adicionar algum padding nas laterais */
+      margin: 0 auto; /* Centraliza a caixa */
+  }
+
+  .timeline-content p {
+      font-size: 14px; /* Ajusta o tamanho da fonte para dispositivos menores */
+  }
+
+  .section-title {
+      font-size: 24px; /* Ajusta o tamanho da fonte para dispositivos menores */
+  }
+
+  .logo-timeline {
+      width: 100px; /* Ajusta a largura da logo para dispositivos muito pequenos */
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-content {
+      padding: 15px; /* Ajusta o padding para dispositivos muito pequenos */
+  }
+
+  .timeline-content h4 {
+      font-size: 20px; /* Ajusta o tamanho do título para dispositivos muito pequenos */
+  }
+
+  .timeline-content p {
+      font-size: 12px; /* Ajusta o tamanho da fonte para dispositivos muito pequenos */
+  }
+
+  .logo-timeline {
+      width: 150px; /* Ajusta a largura da logo para dispositivos muito pequenos */
+  }
+}
+
+
+
+@media (max-width: 344px) {
+  .timeline-section {
+      display: flex;
+      flex-direction: column; /* Empilha as seções uma sobre a outra */
+      align-items: center;
+      margin-bottom: 30px;
+  }
+
+  .section-title {
+      font-size: 20px; /* Ajuste o tamanho da fonte conforme necessário */
+      margin: 0;
+      padding: 10px 0; /* Adiciona algum espaçamento vertical */
+      text-align: center;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.pagination-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.content-grid {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  scroll-behavior: smooth;
+  padding: 10px;
+  max-width: 1500px;
+}
+
+.content-grid::-webkit-scrollbar {
+  display: none; /* Oculta a barra de rolagem em navegadores WebKit */
+}
+
+.content-grid-item {
+  flex: 0 0 auto; /* Impede que o item encolha ou expanda */
+  width: 350px; /* Ajuste a largura dos itens conforme necessário */
+  background-color: #0d1117;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.item-video {
+  width: 100%;
+  height: 200px;
+  display: cover;
+}
+
+.item-description {
+  padding: 10px;
+}
+
+.item-description h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #fff;
+}
+
+.item-description p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: #fff;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  background-color: #010409;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.page-info {
+  font-size: 16px;
+}
+
+/* Esconde a barra de rolagem horizontal para navegadores WebKit (Chrome, Safari) */
+.content-grid::-webkit-scrollbar {
+  display: none; /* Oculta a barra de rolagem horizontal */
+}
+
+/* Para Firefox */
+.content-grid {
+  scrollbar-width: none; /* Oculta a barra de rolagem */
+}
+
+/* Para navegadores que suportam a pseudo-classe ::-ms-overview */
+.content-grid {
+  -ms-overflow-style: none; /* Oculta a barra de rolagem em IE e Edge */
+}
+
+
+
+
+
+.criacoes-titulo {
+  text-align: center;
+  margin-bottom: 20px; /* Ajuste o espaço abaixo do título */
+  color: #fff; /* Ajuste a cor do texto */
+  font-size: 24px; /* Ajuste o tamanho da fonte */
+  font-weight: bold; /* Adicione um peso de fonte, se desejar */
+}

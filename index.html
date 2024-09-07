@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dist/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <section class="main-section">
+        <div class="gradient-bg">
+          <svg 
+            viewBox="0 0 100vw 100vw"
+            xmlns='http://www.w3.org/2000/svg'
+            class="noiseBg"
+          >
+            <filter id='noiseFilterBg'>
+              <feTurbulence 
+                type='fractalNoise'
+                baseFrequency='0.6'
+                stitchTiles='stitch' 
+              />
+            </filter>
+            <rect
+              width='100%'
+              height='100%'
+              preserveAspectRatio="xMidYMid meet"
+              filter='url(#noiseFilterBg)' 
+            />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="svgBlur">
+            <defs>
+              <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
+                <feBlend in="SourceGraphic" in2="goo" />
+              </filter>
+            </defs>
+          </svg>
+          <div class="gradients-container">
+            <div class="g1"></div>
+            <div class="g2"></div>
+            <div class="g3"></div>
+            <div class="g4"></div>
+            <div class="g5"></div>
+            <div class="interactive"></div>
+          </div>
+        </div>
+        <div class="text-content">
+          <h2>
+            <span>{Hello, World}</span>🤘 CONVERTENDO<br> IDEIAS EM SOLUÇÕES DIGITAIS TANGÍVEIS<span>.</span>
+          </h2>
+          <p>
+            Bem-vindo ao meu universo criativo e programável, onde código e imaginação se encontram. Sou desenvolvedor apaixonado por transformar ideias em realidade. Navegue pelo meu portfólio e descubra projetos que combinam inovação, design e tecnologia.
+          </p>
+        </div>
+    </section>
+
+    <section class="sobre">
+        <div class="interface">
+          <div class="flex">
+            <div class="txt-sobre">
+              <h2>O QUE<span>EU FAÇO?</span></h2>
+              <p>Minha jornada na TI começou em 2020, durante a pandemia, quando escrevi minhas primeiras linhas de código em C. Desde então, tenho explorado novas linguagens e ferramentas para transformar ideias em soluções digitais. Hoje, me especializo em desenvolvimento web, mas também participei de projetos envolvendo software e automação de processos.
+      
+                Atualmente, atuo como freelancer, criando desde sites profissionais até sistemas complexos. Também estou desenvolvendo uma micro startup, com mais detalhes em breve...
+                
+                Acredito no poder transformador da tecnologia e busco sempre criar soluções que realmente façam a diferença.</p>
+              <div class="btn-social">
+                <a href="#"><button><i class="bi bi-instagram"></i></button></a>
+                <a href="#"><button><i class="bi bi-github"></i></button></a>
+                <a href="#"><button><i class="bi bi-linkedin"></i></button></a>
+              </div>
+            </div>
+            <div class="img-sobre">
+              <img src="img/fotodeperfil.jpg" alt="Minha foto">
+            </div>
+          </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="linha-do-tempo">
+      <h2 class="titulo">Journey 🚀</h2>
+      <div class="timeline">
+          <!-- Primeira Experiência -->
+          <div class="timeline-item">
+              <div class="timeline-content">
+                  <h4>Análise e Desenvolvimento de Sistemas</h4>
+                  <p>Gran Faculdade - 2022 - Presente</p>
+                  <p>Curitiba - PR.</p>
+                  <p>Graduação: Completo</p>
+              </div>
+          </div>
+  
+          <!-- Quinta Experiência -->
+          <div class="timeline-item">
+              <div class="timeline-content">
+                  <h4>Programador Freelancer</h4>
+                  <p>2023 - Presente</p>
+                  <p><strong>Descrição:</strong> Desenvolvimento de soluções personalizadas para clientes, abrangendo criação de sites, e-commerces e landing pages. Utilização de tecnologias como React, Node.js e Java.</p>
+              </div>
+          </div>
+  
+          <!-- Sexta Experiência -->
+          <div class="timeline-item">
+              <div class="timeline-content">
+                  <img src="img/crdCodeRioDynamics2.0.png" alt="Logo CodeRio Dynamics" class="logo-timeline">
+                  <h4>Em breve</h4>
+                  <p>CodeRio Dynamics - 2019, em andamento.</p>
+              </div>
+          </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="pagination-container">
+      <h2 class="criacoes-titulo">Algumas Criações 🧠</h2>
+      <div class="content-grid">
+          <!-- Item 1 -->
+          <div class="content-grid-item single-item single-pen">
+              <video class="item-video" autoplay muted loop>
+                  <source src="video/loja.mp4" type="video/mp4">
+                  Seu navegador não suporta a tag de vídeo.
+              </video>
+              <div class="item-description">
+                  <h3>Item 1</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+          </div>
+          <!-- Item 2 -->
+          <div class="content-grid-item single-item single-pen">
+              <video class="item-video" autoplay muted loop>
+                  <source src="video/blogcwb.mp4" type="video/mp4">
+                  Seu navegador não suporta a tag de vídeo.
+              </video>
+              <div class="item-description">
+                  <h3>Item 2</h3>
+                  <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+          </div>
+          <!-- Item 3 -->
+          <div class="content-grid-item single-item single-pen">
+              <video class="item-video" autoplay muted loop>
+                  <source src="video/coderiodynamics.mp4" type="video/mp4">
+                  Seu navegador não suporta a tag de vídeo.
+              </video>
+              <div class="item-description">
+                  <h3>Item 3</h3>
+                  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+          </div>
+          <div class="content-grid-item single-item single-pen">
+              <video class="item-video" autoplay muted loop>
+                  <source src="video/donut.mp4" type="video/mp4">
+                  Seu navegador não suporta a tag de vídeo.
+              </video>
+              <div class="item-description">
+                  <h3>Item 4</h3>
+                  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+          </div>
+          <div class="content-grid-item single-item single-pen">
+              <video class="item-video" autoplay muted loop>
+                  <source src="video/asciicube.mp4" type="video/mp4">
+                  Seu navegador não suporta a tag de vídeo.
+              </video>
+              <div class="item-description">
+                  <h3>Item 5</h3>
+                  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+          </div>
+          <div class="content-grid-item single-item single-pen">
+              <video class="item-video" autoplay muted loop>
+                  <source src="video/frontend.mp4" type="video/mp4">
+                  Seu navegador não suporta a tag de vídeo.
+              </video>
+              <div class="item-description">
+                  <h3>Item 6</h3>
+                  <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              </div>
+          </div>
+          <!-- Add more items as needed -->
+      </div>
+      <div class="pagination">
+          <button class="prev">Voltar</button>
+          <span class="page-info">Page 1 of 5</span>
+          <button class="next">Mais</button>
+      </div>
+    </section>
+  
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    <script src="dist/index.js"></script>
+      
+</body>
+</html>
