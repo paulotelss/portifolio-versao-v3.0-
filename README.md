@@ -26,3 +26,6 @@ Obrigado por visitar meu portfólio!
 Nessa versão tem uma área dedicada só para isso. Mostrar as minhas criações.
 
 - Área de Projetos Interativa: Adicionei uma seção com containers interativos que permitem navegar pelos projetos usando setas laterais. Esta funcionalidade proporciona uma maneira dinâmica e envolvente de explorar os projetos. Para dispositivos móveis, apenas desliza o dedo.
+
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=65&section=footer"/>
